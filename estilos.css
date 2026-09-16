@@ -1,0 +1,375 @@
+/* =========================================================
+   Casa Velo — hoja de estilos única para todas las páginas
+   Orden: 1) variables  2) base  3) cabecera  4) portada
+          5) secciones  6) tarjetas  7) formulario  8) pie
+          9) versión móvil
+   ========================================================= */
+
+/* ---------- 1. Variables de color y tipografía ---------- */
+/* Cambiar un color aquí lo cambia en todo el sitio. */
+:root {
+  --pino: #2c3a34;        /* verde oscuro: textos y franjas */
+  --salvia: #7d8f84;      /* verde medio: detalles */
+  --arena: #e6e1d7;       /* beige claro: bordes y fondos suaves */
+  --hueso: #f8f7f4;       /* fondo general */
+  --bronce: #9a7b4f;      /* color de acento: enlaces y botones */
+  --texto: #34403a;       /* gris verdoso para leer cómodo */
+
+  --serif: "Cormorant Garamond", Georgia, serif;
+  --sans: "Karla", "Trebuchet MS", sans-serif;
+}
+
+/* ---------- 2. Estilos base ---------- */
+* {
+  box-sizing: border-box;          /* el padding no agranda las cajas */
+}
+
+body {
+  margin: 0;
+  background-color: var(--hueso);
+  color: var(--texto);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+h1, h2, h3 {
+  font-family: var(--serif);
+  color: var(--pino);
+  font-weight: 600;
+  line-height: 1.15;
+  margin-top: 0;
+}
+
+h1 { font-size: 3.2rem; }
+h2 { font-size: 2.2rem; }
+h3 { font-size: 1.4rem; margin-bottom: 0.4rem; }
+
+p { max-width: 65ch; }           /* líneas cortas = lectura cómoda */
+
+a { color: var(--bronce); }
+
+img { max-width: 100%; display: block; }
+
+/* Caja centrada que usan todas las secciones */
+.contenedor {
+  width: 90%;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+/* Botones */
+.boton {
+  display: inline-block;
+  background-color: var(--pino);
+  color: var(--hueso);
+  padding: 13px 28px;
+  border: 1px solid var(--pino);
+  border-radius: 2px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+}
+
+.boton:hover { background-color: #1e2a25; }
+
+.boton-claro {
+  background-color: transparent;
+  color: var(--pino);
+}
+
+.boton-claro:hover {
+  background-color: var(--arena);
+  color: var(--pino);
+}
+
+/* Foco visible para quien navega con teclado */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--bronce);
+  outline-offset: 3px;
+}
+
+/* ---------- 3. Cabecera y menú ---------- */
+.cabecera {
+  border-bottom: 1px solid var(--arena);
+  background-color: var(--hueso);
+}
+
+.barra {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 0;
+}
+
+.logo {
+  font-family: var(--serif);
+  font-size: 1.7rem;
+  color: var(--pino);
+  text-decoration: none;
+  line-height: 1;
+}
+
+.logo span {
+  display: block;
+  font-family: var(--sans);
+  font-size: 0.66rem;
+  letter-spacing: 2px;
+  color: var(--salvia);
+}
+
+.menu {
+  list-style: none;      /* quita las viñetas */
+  display: flex;
+  gap: 26px;
+  margin: 0;
+  padding: 0;
+}
+
+.menu a {
+  color: var(--texto);
+  text-decoration: none;
+  font-size: 0.95rem;
+  padding-bottom: 4px;
+  border-bottom: 1px solid transparent;
+}
+
+.menu a:hover { border-bottom-color: var(--bronce); }
+
+/* La clase "activo" marca la página en la que estamos */
+.menu .activo {
+  color: var(--pino);
+  border-bottom-color: var(--pino);
+}
+
+/* ---------- 4. Portada (hero) ---------- */
+/* El fondo imita los pliegues de una cortina usando solo CSS.
+   Para poner una foto real: reemplaza el "repeating-linear-gradient"
+   por  background-image: url("../img/portada.jpg");  */
+.portada {
+  background-color: var(--arena);
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.55) 0px,
+    rgba(255, 255, 255, 0.55) 14px,
+    rgba(125, 143, 132, 0.18) 34px,
+    rgba(255, 255, 255, 0.55) 54px
+  );
+  background-size: cover;
+  border-bottom: 1px solid #d9d3c7;
+}
+
+.portada-texto {
+  padding: 110px 0 120px;
+}
+
+.portada h1 { max-width: 15ch; }
+
+.portada p {
+  font-size: 1.1rem;
+  max-width: 46ch;
+  margin-bottom: 32px;
+}
+
+/* Portada más baja para las páginas internas */
+.portada-interior .portada-texto { padding: 70px 0; }
+.portada-interior h1 { font-size: 2.6rem; }
+
+/* ---------- 5. Secciones ---------- */
+.seccion { padding: 80px 0; }
+
+.seccion-arena { background-color: #f2efe9; }
+
+.titulo-seccion { margin-bottom: 8px; }
+
+.bajada {
+  color: var(--salvia);
+  margin-bottom: 40px;
+}
+
+/* Rejillas: 3 columnas y 2 columnas */
+.grilla-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.grilla-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+/* ---------- 6. Tarjetas y fotos ---------- */
+.tarjeta {
+  background-color: var(--hueso);
+  border: 1px solid var(--arena);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.tarjeta:hover { border-color: var(--salvia); }
+
+.tarjeta-texto { padding: 22px 24px 26px; }
+
+.tarjeta p { font-size: 0.95rem; margin: 0; }
+
+/* Marcador de foto: se ve bien aunque todavía no subas imágenes.
+   Cuando tengas fotos, borra este div y usa:
+   <img src="img/sala.jpg" alt="Cortina de sala"> */
+.foto {
+  height: 210px;
+  background-color: var(--arena);
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.5) 0px,
+    rgba(255, 255, 255, 0.5) 10px,
+    rgba(125, 143, 132, 0.22) 24px,
+    rgba(255, 255, 255, 0.5) 38px
+  );
+}
+
+.foto-alta { height: 330px; }
+
+/* Lista de ambientes o materiales */
+.lista-limpia {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.lista-limpia li {
+  padding: 11px 0;
+  border-bottom: 1px solid var(--arena);
+}
+
+/* Servicios numerados: aquí sí hay un orden real (1, 2, 3, 4) */
+.paso {
+  display: flex;
+  gap: 20px;
+  padding: 24px 0;
+  border-top: 1px solid var(--arena);
+}
+
+.paso-numero {
+  font-family: var(--serif);
+  font-size: 2rem;
+  color: var(--salvia);
+  min-width: 46px;
+}
+
+/* Franja de llamada a la acción */
+.franja {
+  background-color: var(--pino);
+  color: var(--arena);
+  padding: 64px 0;
+  text-align: center;
+}
+
+.franja h2 { color: var(--hueso); }
+
+.franja p { margin: 0 auto 28px; color: #c9cec9; }
+
+.franja .boton {
+  background-color: var(--bronce);
+  border-color: var(--bronce);
+  color: #fff;
+}
+
+.franja .boton:hover { background-color: #86693f; }
+
+/* ---------- 7. Formulario de contacto ---------- */
+.formulario label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+  color: var(--pino);
+}
+
+.formulario input,
+.formulario select,
+.formulario textarea {
+  width: 100%;
+  padding: 11px 13px;
+  margin-bottom: 20px;
+  border: 1px solid #d9d3c7;
+  border-radius: 2px;
+  background-color: #fff;
+  font-family: var(--sans);
+  font-size: 1rem;
+  color: var(--texto);
+}
+
+.formulario textarea { min-height: 130px; resize: vertical; }
+
+.datos-contacto p { margin: 0 0 18px; }
+
+.dato-titulo {
+  color: var(--salvia);
+  font-size: 0.85rem;
+  display: block;
+}
+
+/* ---------- 8. Pie de página ---------- */
+.pie {
+  background-color: var(--pino);
+  color: #c9cec9;
+  padding: 54px 0 28px;
+  font-size: 0.92rem;
+}
+
+.pie h3 { color: var(--hueso); font-size: 1.1rem; }
+
+.pie a { color: var(--arena); text-decoration: none; }
+
+.pie a:hover { text-decoration: underline; }
+
+.pie-columnas {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 40px;
+}
+
+.pie-final {
+  margin-top: 36px;
+  padding-top: 18px;
+  border-top: 1px solid #45524b;
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+/* ---------- 9. Versión móvil ---------- */
+/* Todo lo de adentro se aplica solo en pantallas de 760px o menos. */
+@media (max-width: 760px) {
+  body { font-size: 16px; }
+
+  h1 { font-size: 2.3rem; }
+  h2 { font-size: 1.8rem; }
+
+  .barra {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .menu {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .portada-texto { padding: 70px 0; }
+
+  .seccion { padding: 56px 0; }
+
+  .grilla-3,
+  .grilla-2,
+  .pie-columnas {
+    grid-template-columns: 1fr;   /* una sola columna */
+    gap: 24px;
+  }
+}
